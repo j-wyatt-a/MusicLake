@@ -35,3 +35,10 @@ jobs:
       # 执行编译脚本
       - name: Build project
         run: ./gradlew assembleRelease
+      
+      - name : upload apk
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: xupdate_apk
+          path: ${{ github.workspace }}/app/build/outputs/apk/release
